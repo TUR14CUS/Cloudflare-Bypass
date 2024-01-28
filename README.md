@@ -1,40 +1,47 @@
-# Automated CAPTCHA Solver
+# Automated Browsing using `undetected_chromedriver`
 
-This Python script utilizes the `undetected_chromedriver` library, along with the TwoCaptcha service, to automatically solve CAPTCHAs on a specified webpage. It is particularly useful when dealing with reCAPTCHA challenges.
+This Python script utilizes the `undetected_chromedriver` library to create an instance of the Chrome browser and navigate to a specified website. The `undetected_chromedriver` library helps in avoiding detection by websites that attempt to detect and block automated browser sessions.
 
 ## Features:
 
-### 1. CAPTCHA Solving Function:
-   - Opens a browser using an undetected ChromeDriver to navigate to a specified webpage.
-   - Extracts the site key from the target webpage.
-   - Utilizes the TwoCaptcha service to solve the CAPTCHA challenge.
-   - Enters the obtained CAPTCHA key into the corresponding form.
-   - Submits the form to complete the CAPTCHA verification.
+### 1. Automated Browsing:
+   - Opens a new instance of Chrome using the `undetected_chromedriver`.
+   - Takes the user input for the target website.
+   - Navigates to the specified website.
+   - Pauses for 10 seconds to simulate interaction or data retrieval.
 
-### 2. Usage Example:
-   - Prompts the user to enter the URL of the webpage containing the CAPTCHA challenge.
-   - Invokes the CAPTCHA solving function for the specified webpage.
+### 2. Usage Instructions:
 
-## Usage Instructions:
-
-1. Install the required libraries:
+1. Install the required library:
    ```bash
-   pip install undetected-chromedriver twocaptcha
+   pip install undetected-chromedriver
    ```
 
-2. Obtain a TwoCaptcha API key: [TwoCaptcha API](https://2captcha.com/)
+2. Run the script using a Python interpreter.
 
-3. Replace `"YOUR_API"` in the script with your actual TwoCaptcha API key.
+3. Enter the URL of the website when prompted.
 
-4. Run the script using a Python interpreter.
+4. The script will open the Chrome browser, navigate to the specified website, and automatically close the browser after a 10-second pause.
 
-5. Enter the URL of the webpage with the CAPTCHA challenge when prompted.
+## Usage Example:
 
-6. The script will solve the CAPTCHA using the TwoCaptcha service and automatically submit the form.
+```python
+from undetected_chromedriver import Chrome
+import time
+
+# Create a new instance of Chrome using a context manager
+with Chrome() as chrome:
+    # Navigate to the website
+    website = input("Enter the website: ")
+    chrome.get(website)
+
+    # Pause for 10 seconds (customize as needed)
+    time.sleep(10)
+
+# The browser will be closed automatically after exiting the 'with' block
+```
 
 **Note:**
-- Ensure you have a valid TwoCaptcha API key.
-- Customize the script as needed for your specific use case.
-- Respect the terms of service of the websites you interact with, and use automation responsibly.
-
-Feel free to integrate this script into your projects where automated CAPTCHA solving is required.
+- Customize the script based on your specific use case.
+- Be aware of website terms of service and legal considerations when automating browsing.
+- Use responsibly and ethically.
